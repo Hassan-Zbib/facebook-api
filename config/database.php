@@ -1,13 +1,10 @@
 <?php 
 
-  $db_host = 'localhost';
-  $db_name = 'facebookdb';
-  $db_user = 'root';
-  $db_pass = '';
+require 'config.php';
 
   //  Connect
 
-  $db =  new mysqli($db_host, $db_user, $db_pass, $db_name);
+  $db =  new mysqli(db_host, db_user, db_pass, db_name);
 
   // Check connection
   if (mysqli_connect_errno()) {
