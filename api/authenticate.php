@@ -27,7 +27,7 @@ function getJWT($id) {
 
     $key = jwt_key; // secret key in config file
     $iat = time(); //  token issued time
-    $exp = $iat + 60; // token expiry time
+    $exp = $iat + 3600; // token expiry time
     $payload = array(
         "user_id" => $id,
         "iat" => $iat,

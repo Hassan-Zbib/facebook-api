@@ -1,42 +1,52 @@
 <?php
 
-require 'auth.php';
+    require 'authenticate.php';
+    // Headers
+    header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json');
+    header('Access-Control-Allow-Methods: POST');
 
-if(isset($_POST["email"])){
-    $email = $mysqli->real_escape_string($_POST["email"]);
-}else{
-    die("Don't try to mess around bro ;)");
-}
 
-if(isset($_POST["password"])){
-    $password = $mysqli->real_escape_string($_POST["password"]);
+    $bad_request = [];
+    $bad_request['message'] ='Bad Request';
+
+    // turnary / ifs to check post data
+    $email = isset($_POST['email']) ? $db->real_escape_string($_POST['email']) : die(json_encode($bad_request));
+    $password = isset($_POST['password']) ? $db->real_escape_string($_POST['password']) : die(json_encode($bad_request));
     $password = hash("sha256", $password);
-}else{
-    die("Don't try to mess around bro ;)");
-}
 
-$query = $mysqli->prepare("SELECT id FROM users WHERE email = ? AND password = ?");
-$query->bind_param("ss", $email, $password);
-$query->execute();
+    $query = $db->prepare("SELECT id, name, password FROM users WHERE email = ?");
+    $query->bind_param("s", $email);
+    $query->execute();
+    $query->store_result();
 
-$query->store_result();
-$num_rows = $query->num_rows;
-$query->bind_result($id);
-$query->fetch();
+    // Get the number of rows 
+    $num_rows = $query->num_rows;
+    // bind results
+    $query->bind_result($id, $name, $pass);
+    $query->fetch();
 
-$array_response = [];
+    if ($password !== $pass){
+        $bad_request['message'] ='Password is incorrect';
+        die(json_encode($bad_request));
+    } elseif ($num_rows == 0) {
+        $bad_request['message'] ='User not found';
+        die(json_encode($bad_request));
+    }
 
-if($num_rows == 0){
-    $array_response["status"] = "User not found!";
-}else{
-    $array_response["status"] = "Logged In !";
+    $jwt = getJWT($id);
+
+    $array_response = [];
+    $array_response["status"] = "Logged In";
     $array_response["user_id"] = $id;
-}
- 
-$json_response = json_encode($array_response);
-echo $json_response;
+    $array_response["name"] = $name;
+    $array_response["email"] = strtolower($email);
+    $array_response["token"] = $jwt;
+    
+    $json_response = json_encode($array_response);
+    echo $json_response;
 
-$query->close();
-$mysqli->close();
+    $query->close();
+    $db->close();
 
 ?>
