@@ -5,6 +5,7 @@
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
     $bad_request = [];
@@ -15,6 +16,7 @@
     $password = isset($_POST['password']) ? $db->real_escape_string($_POST['password']) : die(json_encode($bad_request));
     $password = hash("sha256", $password);
 
+    // query user
     $query = $db->prepare("SELECT id, name, password FROM users WHERE email = ?");
     $query->bind_param("s", $email);
     $query->execute();
