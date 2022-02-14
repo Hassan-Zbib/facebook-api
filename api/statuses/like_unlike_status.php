@@ -35,6 +35,7 @@
 
 
 
+    // like or unlike status and update likes_count
     if($is_liked) {
         $stmt_1 = "INSERT INTO likes (user_id, status_id) VALUES (?, ?);";
         $stmt_2 = "UPDATE statuses SET likes_count = likes_count + 1 WHERE id = ?;";
@@ -43,11 +44,9 @@
         $stmt_2 = "UPDATE statuses SET likes_count = likes_count - 1 WHERE id = ?;";
     }
 
-    // like or unlike status and update likes_count
     $query = $db->prepare($stmt_1);
     $query->bind_param("ii", $user_id, $status_id);
 
-    // update status likes_count
     $update_query = $db->prepare($stmt_2);
     $update_query->bind_param("i", $status_id);
 
@@ -58,5 +57,6 @@
     echo json_encode(['message' => 'Done']);
 
       $query->close();
+      $update_query->close();
       $db->close();
 ?>
