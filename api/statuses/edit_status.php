@@ -4,7 +4,7 @@
     // Headers
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Methods: PUT');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
@@ -12,19 +12,19 @@
         'message' => 'Bad Request'
     );
 
-    $post = json_decode(file_get_contents("php://input"));
+    $put = json_decode(file_get_contents("php://input"));
 
     // turnary / ifs to check post data
-    $user_id = isset($post->user_id) 
-                ? $db->real_escape_string($post->user_id)
+    $user_id = isset($put->user_id) 
+                ? $db->real_escape_string($put->user_id)
                 : die(json_encode($bad_request));
 
-    $status_id = isset($post->status_id) 
-                ? $db->real_escape_string($post->status_id)
+    $status_id = isset($put->status_id) 
+                ? $db->real_escape_string($put->status_id)
                 : die(json_encode($bad_request));
 
-    $content = isset($post->content)
-                ? $db->real_escape_string($post->content) 
+    $content = isset($put->content)
+                ? $db->real_escape_string($put->content) 
                 : die(json_encode($bad_request));
 
 
