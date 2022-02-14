@@ -1,21 +1,30 @@
 <?php
 
-    require 'authenticate.php';
+    require_once(dirname(__FILE__)."/authenticate.php");
     // Headers
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
-    $bad_request = [];
-    $bad_request['message'] ='Bad Request';
+    $bad_request = ['message' => 'Bad Request'];
 
-    // turnary / ifs to check post data
-    $email = isset($_POST['email']) ? $db->real_escape_string($_POST['email']) : die(json_encode($bad_request));
-    $password = isset($_POST['password']) ? $db->real_escape_string($_POST['password']) : die(json_encode($bad_request));
+    $post = json_decode(file_get_contents("php://input"));
+
+    // ternary / ifs to check post data
+    $email = isset($post->email) 
+            ? $db->real_escape_string($post->email) 
+            : die(json_encode($bad_request));
+
+    $password = isset($post->password) 
+                ? $db->real_escape_string($post->password) 
+                : die(json_encode($bad_request));
+                
     $password = hash("sha256", $password);
 
-    $query = $db->prepare("SELECT id, name, password FROM users WHERE email = ?");
+    // query user
+    $query = $db->prepare("SELECT id, name, password FROM users WHERE email = ?;");
     $query->bind_param("s", $email);
     $query->execute();
     $query->store_result();
@@ -27,21 +36,20 @@
     $query->fetch();
 
     if ($password !== $pass){
-        $bad_request['message'] ='Password is incorrect';
-        die(json_encode($bad_request));
+        die(json_encode(['message' => 'Password is incorrect']));
     } elseif ($num_rows == 0) {
-        $bad_request['message'] ='User not found';
-        die(json_encode($bad_request));
+        die(json_encode(['message' => 'User not found']));
     }
 
     $jwt = getJWT($id);
 
-    $array_response = [];
-    $array_response["status"] = "Logged In";
-    $array_response["user_id"] = $id;
-    $array_response["name"] = $name;
-    $array_response["email"] = strtolower($email);
-    $array_response["token"] = $jwt;
+    $array_response = [
+        'status' => 'Validated',
+        'user_id' => $id,
+        'name' => $name,
+        'email' => strtolower($email),
+        'token' => $jwt
+    ];
     
     $json_response = json_encode($array_response);
     echo $json_response;
