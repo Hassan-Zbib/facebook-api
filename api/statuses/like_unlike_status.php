@@ -58,5 +58,6 @@
     echo json_encode(['message' => 'Done']);
 
       $query->close();
+      $update_query->close();
       $db->close();
 ?>
