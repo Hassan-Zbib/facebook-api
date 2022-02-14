@@ -8,8 +8,9 @@
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
-    $bad_request = [];
-    $bad_request['message'] ='Bad Request';
+    $bad_request = array(
+        'message' => 'Bad Request'
+    );
 
     // turnary / ifs to check post data
     $user_id = isset($_POST['user_id']) 

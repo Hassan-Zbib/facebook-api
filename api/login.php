@@ -8,8 +8,9 @@
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
-    $bad_request = [];
-    $bad_request['message'] ='Bad Request';
+    $bad_request = array(
+        'message' => 'Bad Request'
+    );
 
     // ternary / ifs to check post data
     $email = isset($_POST['email']) 
@@ -44,12 +45,13 @@
 
     $jwt = getJWT($id);
 
-    $array_response = [];
-    $array_response["status"] = "Logged In";
-    $array_response["user_id"] = $id;
-    $array_response["name"] = $name;
-    $array_response["email"] = strtolower($email);
-    $array_response["token"] = $jwt;
+    $array_response = array(
+        'status' => 'Bad Request',
+        'user_id' => $id,
+        'name' => $name,
+        'email' => strtolower($email),
+        'token' => $jwt
+    );
     
     $json_response = json_encode($array_response);
     echo $json_response;
