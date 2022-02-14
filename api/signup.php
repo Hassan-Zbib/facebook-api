@@ -34,5 +34,8 @@
 
     echo json_encode(
         array('message' => 'User Created')
-      )
+    );
+
+      $query->close();
+      $db->close();
 ?>
