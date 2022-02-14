@@ -1,6 +1,6 @@
 <?php
 
-    require 'authenticate.php';
+    require_once(dirname(__FILE__)."/authenticate.php");
     // Headers
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
