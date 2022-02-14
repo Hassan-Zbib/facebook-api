@@ -8,16 +8,20 @@
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
-    $bad_request = array(
-        'message' => 'Bad Request'
-    );
+    $bad_request = [ 'message' => 'Bad Request'];
 
     $get = json_decode(file_get_contents("php://input"));
 
-    // turnary / ifs to check get data
-    $user_id = isset($get->user_id) 
-                ? $db->real_escape_string($get->user_id)
+    //validate user
+    $token = isset($get->token) 
+                ? $db->real_escape_string($get->token) 
                 : die(json_encode($bad_request));
+
+    $temp = validateUser($token);
+
+    $user_id = !empty($temp)
+                ? $temp
+                : die(json_encode(['message' => 'Not Authorized']));
 
 
     // get statuses

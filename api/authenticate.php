@@ -17,7 +17,7 @@ function validateUser($token) {
         $user_id = $decoded_array['user_id'];
 
     } catch (\Exception $e) {
-        return false;
+        return NULL;
     };
     return $user_id;
 };

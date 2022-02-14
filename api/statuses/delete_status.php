@@ -8,11 +8,20 @@
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
-    $bad_request = array(
-        'message' => 'Bad Request'
-    );
+    $bad_request = [ 'message' => 'Bad Request'];
 
     $del = json_decode(file_get_contents("php://input"));
+
+    //validate user
+    $token = isset($del->token) 
+                ? $db->real_escape_string($del->token) 
+                : die(json_encode($bad_request));
+
+    $temp = validateUser($token);
+
+    $user_id = !empty($temp)
+                ? $temp
+                : die(json_encode(['message' => 'Not Authorized']));
 
     // turnary / ifs to check post data
     $status_id = isset($del->status_id) 
@@ -24,9 +33,7 @@
     $query->bind_param("i", $status_id);
     $query->execute();
 
-    echo json_encode(
-        array('message' => 'Status Deleted')
-    );
+    echo json_encode(['message' => 'Status Deleted']);
 
       $query->close();
       $db->close();

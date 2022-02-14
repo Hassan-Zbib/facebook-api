@@ -8,9 +8,7 @@
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
-    $bad_request = array(
-        'message' => 'Bad Request'
-    );
+    $bad_request = ['message' => 'Bad Request'];
 
     $post = json_decode(file_get_contents("php://input"));
 
@@ -35,8 +33,7 @@
     $query->execute();
     $query->store_result();
     if ($query->num_rows !== 0) {
-        $bad_request['message'] ='User already exists';
-        die(json_encode($bad_request));
+        die(json_encode(['message' => 'User already exists']));
     }
 
     // add user
@@ -44,9 +41,7 @@
     $query->bind_param("sss", $name, $email, $password);
     $query->execute();
 
-    echo json_encode(
-        array('message' => 'User Created')
-    );
+    echo json_encode(['message' => 'User Created']);
 
       $query->close();
       $db->close();

@@ -8,9 +8,7 @@
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
-    $bad_request = array(
-        'message' => 'Bad Request'
-    );
+    $bad_request = ['message' => 'Bad Request'];
 
     $post = json_decode(file_get_contents("php://input"));
 
@@ -38,22 +36,20 @@
     $query->fetch();
 
     if ($password !== $pass){
-        $bad_request['message'] ='Password is incorrect';
-        die(json_encode($bad_request));
+        die(json_encode(['message' => 'Password is incorrect']));
     } elseif ($num_rows == 0) {
-        $bad_request['message'] ='User not found';
-        die(json_encode($bad_request));
+        die(json_encode(['message' => 'User not found']));
     }
 
     $jwt = getJWT($id);
 
-    $array_response = array(
+    $array_response = [
         'status' => 'Validated',
         'user_id' => $id,
         'name' => $name,
         'email' => strtolower($email),
         'token' => $jwt
-    );
+    ];
     
     $json_response = json_encode($array_response);
     echo $json_response;
