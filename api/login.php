@@ -12,13 +12,15 @@
         'message' => 'Bad Request'
     );
 
+    $post = json_decode(file_get_contents("php://input"));
+
     // ternary / ifs to check post data
-    $email = isset($_POST['email']) 
-            ? $db->real_escape_string($_POST['email']) 
+    $email = isset($post->email) 
+            ? $db->real_escape_string($post->email) 
             : die(json_encode($bad_request));
 
-    $password = isset($_POST['password']) 
-                ? $db->real_escape_string($_POST['password']) 
+    $password = isset($post->password) 
+                ? $db->real_escape_string($post->password) 
                 : die(json_encode($bad_request));
                 
     $password = hash("sha256", $password);
@@ -46,7 +48,7 @@
     $jwt = getJWT($id);
 
     $array_response = array(
-        'status' => 'Bad Request',
+        'status' => 'Validated',
         'user_id' => $id,
         'name' => $name,
         'email' => strtolower($email),

@@ -12,11 +12,11 @@
         'message' => 'Bad Request'
     );
 
-    parse_str(file_get_contents("php://input"), $get);
+    $get = json_decode(file_get_contents("php://input"));
 
     // turnary / ifs to check get data
-    $user_id = isset($get['user_id']) 
-                ? $db->real_escape_string($get['user_id'])
+    $user_id = isset($get->user_id) 
+                ? $db->real_escape_string($get->user_id)
                 : die(json_encode($bad_request));
 
 

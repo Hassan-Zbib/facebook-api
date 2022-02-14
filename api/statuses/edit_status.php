@@ -12,17 +12,19 @@
         'message' => 'Bad Request'
     );
 
+    $post = json_decode(file_get_contents("php://input"));
+
     // turnary / ifs to check post data
-    $user_id = isset($_POST['user_id']) 
-                ? $db->real_escape_string($_POST['user_id'])
+    $user_id = isset($post->user_id) 
+                ? $db->real_escape_string($post->user_id)
                 : die(json_encode($bad_request));
 
-    $status_id = isset($_POST['status_id']) 
-                ? $db->real_escape_string($_POST['status_id'])
+    $status_id = isset($post->status_id) 
+                ? $db->real_escape_string($post->status_id)
                 : die(json_encode($bad_request));
 
-    $content = isset($_POST['content'])
-                ? $db->real_escape_string($_POST['content']) 
+    $content = isset($post->content)
+                ? $db->real_escape_string($post->content) 
                 : die(json_encode($bad_request));
 
 
