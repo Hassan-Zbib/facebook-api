@@ -16,7 +16,7 @@ $bad_request['message'] ='Bad Request';
     $query->bind_param("sss", $user_id,$friend_id,$request);
     $query->execute();
 
-    echo json_encode(['request' => `${request}`]);
+    echo json_encode(['status' => 'blocked']);
 
 $query->close();
 $db->close();
