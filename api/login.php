@@ -11,9 +11,15 @@
     $bad_request = [];
     $bad_request['message'] ='Bad Request';
 
-    // turnary / ifs to check post data
-    $email = isset($_POST['email']) ? $db->real_escape_string($_POST['email']) : die(json_encode($bad_request));
-    $password = isset($_POST['password']) ? $db->real_escape_string($_POST['password']) : die(json_encode($bad_request));
+    // ternary / ifs to check post data
+    $email = isset($_POST['email']) 
+            ? $db->real_escape_string($_POST['email']) 
+            : die(json_encode($bad_request));
+
+    $password = isset($_POST['password']) 
+                ? $db->real_escape_string($_POST['password']) 
+                : die(json_encode($bad_request));
+                
     $password = hash("sha256", $password);
 
     // query user
