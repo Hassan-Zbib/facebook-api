@@ -28,6 +28,16 @@
                 ? $db->real_escape_string($get->friend_id)
                 : die(json_encode($bad_request));
 
+    // check if is friend
+    $friend_request = "accepted";
+    $query =$db->prepare("SELECT * FROM friends WHERE user_id = ? AND friend_id = ? AND request = ?;");
+    $query->bind_param("iis", $user_id, $friend_id, $friend_request);
+    $query->execute();
+    $query->store_result();
+    if ($query->num_rows === 0) {
+        die(json_encode(['message' => 'Users are not friends']));
+    }
+
     // get statuses
     $query =$db->prepare("SELECT s.*,   CASE 
                                             WHEN ? in (SELECT DISTINCT user_id FROM likes WHERE status_id = s.id) THEN 1
