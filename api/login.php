@@ -23,7 +23,7 @@
     $password = hash("sha256", $password);
 
     // query user
-    $query = $db->prepare("SELECT id, name, password FROM users WHERE email = ?");
+    $query = $db->prepare("SELECT id, name, password FROM users WHERE email = ?;");
     $query->bind_param("s", $email);
     $query->execute();
     $query->store_result();

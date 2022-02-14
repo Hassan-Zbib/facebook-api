@@ -27,7 +27,7 @@
     $query->execute();
 
     echo json_encode(
-        array('message' => 'status Created')
+        array('message' => 'Status Created')
     );
 
       $query->close();

@@ -27,7 +27,7 @@
     $password = hash("sha256", $password);
 
     // check if already exists
-    $query = $db->prepare("SELECT id FROM users WHERE email = ?");
+    $query = $db->prepare("SELECT id FROM users WHERE email = ?;");
     $query->bind_param("s", $email);
     $query->execute();
     $query->store_result();
