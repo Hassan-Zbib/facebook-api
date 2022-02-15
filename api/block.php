@@ -15,8 +15,6 @@ $bad_request['message'] ='Bad Request';
     $query->bind_param("ss", $user_id,$friend_id);
     $query->execute();
 
-    
-
 $query->close();
 $db->close();
 
