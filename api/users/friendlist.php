@@ -24,7 +24,7 @@
 
     
     $request = 'accepted';
-    $query = $db->prepare(" SELECT u.*, f.id as request_id , f.request
+    $query = $db->prepare(" SELECT u.*, f.id as request_id , f.request, f.created_at as added_at
                             FROM users u
                             INNER JOIN friends f 
                             ON  f.user_id = u.id OR f.friend_id = u.id 
