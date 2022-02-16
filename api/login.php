@@ -24,7 +24,7 @@
     $password = hash("sha256", $password);
 
     // query user
-    $query = $db->prepare("SELECT id, name, password FROM users WHERE email = ?;");
+    $query = $db->prepare("SELECT id, name, password, picture, created_at FROM users WHERE email = ?;");
     $query->bind_param("s", $email);
     $query->execute();
     $query->store_result();
@@ -32,7 +32,7 @@
     // Get the number of rows 
     $num_rows = $query->num_rows;
     // bind results
-    $query->bind_result($id, $name, $pass);
+    $query->bind_result($id, $name, $pass, $picture, $created_at);
     $query->fetch();
 
     if ($password !== $pass){
@@ -48,6 +48,8 @@
         'user_id' => $id,
         'name' => $name,
         'email' => strtolower($email),
+        'picture' => $picture,
+        'created_at' => $created_at,
         'token' => $jwt
     ];
     

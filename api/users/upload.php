@@ -24,21 +24,45 @@
                 : die(json_encode(['message' => 'Not Authorized']));
 
     // turnary / ifs to check post data
-    $status_id = isset($post->status_id) 
-                ? $db->real_escape_string($post->status_id)
-                : die(json_encode($bad_request));
 
-    $content = isset($post->content)
-                ? $db->real_escape_string($post->content) 
-                : die(json_encode($bad_request));
+    // if(isset($_POST['but_upload'])){
+    // $name = $_FILES['file']['name'];
+    // $target_dir = "upload/";
+    // $target_file = $target_dir . basename($_FILES["file"]["name"]);
+  
+    // // Select file type
+    // $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  
+    // // Valid file extensions
+    // $extensions_arr = array("jpg","jpeg","png","gif");
+  
+    // // Check extension
+    // if( in_array($imageFileType,$extensions_arr) ){
+    //    // Upload file
+    //    if(move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name)){
+    //       // Insert record
+    //       $query = "insert into images(name) values('".$name."')";
+    //       mysqli_query($con,$query);
+    //    }
+  
+//     }
+// }
+   
+  
 
+
+    $picture = isset($post->picture) 
+                ? $db->real_escape_string($post->picture)
+                : die(json_encode($bad_request));
 
     // update status
     $query =$db->prepare("UPDATE statuses SET content = ? WHERE id = ? AND user_id = ?;");
     $query->bind_param("sii", $content, $status_id, $user_id);
     $query->execute();
 
-    echo json_encode(['message' => 'Status Updated']);
+    echo json_encode(
+        array('message' => 'Picture Uploaded')
+    );
 
       $query->close();
       $db->close();

@@ -34,9 +34,7 @@
     $query->bind_param("is", $user_id, $content);
     $query->execute();
 
-    echo json_encode(
-        array('message' => 'Status Created')
-    );
+    echo json_encode(['message' => 'Status Created']);
 
       $query->close();
       $db->close();

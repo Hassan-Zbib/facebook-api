@@ -4,17 +4,17 @@
     // Headers
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: DELETE');
+    header('Access-Control-Allow-Methods: POST');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
 
     $bad_request = [ 'message' => 'Bad Request'];
 
-    $del = json_decode(file_get_contents("php://input"));
+    $post = json_decode(file_get_contents("php://input"));
 
     //validate user
-    $token = isset($del->token) 
-                ? $db->real_escape_string($del->token) 
+    $token = isset($post->token) 
+                ? $db->real_escape_string($post->token) 
                 : die(json_encode($bad_request));
 
     $temp = validateUser($token);
@@ -24,8 +24,8 @@
                 : die(json_encode(['message' => 'Not Authorized']));
 
     // turnary / ifs to check post data
-    $status_id = isset($del->status_id) 
-                ? $db->real_escape_string($del->status_id)
+    $status_id = isset($post->status_id) 
+                ? $db->real_escape_string($post->status_id)
                 : die(json_encode($bad_request));
 
     // delete status
