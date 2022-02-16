@@ -23,20 +23,25 @@
                 : die(json_encode(['message' => 'Not Authorized']));
 
     
-    // get friendlist of the above user_id
-    $query = $db->prepare("Select * FROM users;");
+    $request = 'accepted';
+    $query = $db->prepare("SELECT u.* 
+    FROM users u
+    WHERE u.id in (Select user_id, friend_id FROM friends 
+    where ( user_id = ? OR friend_id = ? ) AND request= ? ) 
+    AND u.id != ?");
+    $query->bind_param('issi', $user_id, $friend_id , $request, $user_id);
     $query->execute();
-
+    // fixed the bind_param error
     $array = $query->get_result();
-
+    
     $array_response = [];
     while($user = $array->fetch_assoc()){
         $array_response[] = $user;
     }
-
+    
     $json_response = json_encode($array_response);
     echo $json_response;
-
+    
     $query->close();
     $db->close();
 
