@@ -24,13 +24,13 @@
 
     
     $request = 'accepted';
-    $query = $db->prepare(" SELECT u.*, f.id as request_id , f.request
+    $query = $db->prepare(" SELECT u.*, b.id as block_id
                             FROM users u
-                            INNER JOIN friends f 
-                            ON  f.user_id = u.id OR f.friend_id = u.id 
-                            WHERE u.id != ? AND f.request = ?
+                            INNER JOIN blocks b 
+                            ON  u.id = b.friend_id
+                            WHERE b.user_id = ?           
     ");
-    $query->bind_param('is', $user_id, $request);
+    $query->bind_param('i', $user_id);
     $query->execute();
     $array = $query->get_result();
     

@@ -26,10 +26,10 @@
     // and then add that person to friends and pend the request
         $request = "pending";
         $query = $db->prepare("INSERT INTO friends(user_id,friend_id,request) VALUES (?,?,?)"); 
-        $query->bind_param("sss", $user_id,$friend_id,$request);
+        $query->bind_param("iis", $user_id,$friend_id,$request);
         $query->execute();
 
-        echo json_encode(['status' => 'blocked']);
+        echo json_encode(['message' => 'Request sent']);
 
     $query->close();
     $db->close();
