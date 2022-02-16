@@ -24,12 +24,13 @@
 
     
     $request = 'accepted';
-    $query = $db->prepare("SELECT u.* 
-    FROM users u
-    WHERE u.id in (Select user_id, friend_id FROM friends 
-    where ( user_id = ? OR friend_id = ? ) AND request= ? ) 
-    AND u.id != ?");
-    $query->bind_param('issi', $user_id, $friend_id , $request, $user_id);
+    $query = $db->prepare(" SELECT u.*, f.id as request_id 
+                            FROM users u
+                            INNER JOIN friends f 
+                            ON  f.user_id = u.id OR f.friend_id = u.id 
+                            WHERE u.id != ? AND f.request = ?
+    ");
+    $query->bind_param('is', $user_id, $request);
     $query->execute();
     // fixed the bind_param error
     $array = $query->get_result();
