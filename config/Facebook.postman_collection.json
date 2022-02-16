@@ -1,0 +1,452 @@
+{
+	"info": {
+		"_postman_id": "789cf2ad-1c17-4aab-9b24-1489fd70fba2",
+		"name": "Facebook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "statuses",
+			"item": [
+				{
+					"name": "get_feed",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDQ5NTc1OTYsImV4cCI6MTY0NDk2MTE5Nn0.QhvdZHO-3fvlUFnETWBlHxgqWAIgOGmKQZrmBNYJiU4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/statuses/get_feed.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"statuses",
+								"get_feed.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_user_statuses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDQ5MjM1NjIsImV4cCI6MTY0NDkyNzE2Mn0.DhChQnZcLhhCyQWV-bxv8xrPl_ZgRdXwYU56trleG70\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/statuses/get_user_statuses.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"statuses",
+								"get_user_statuses.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_friends_statuses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDQ4NTU2MTIsImV4cCI6MTY0NDg1OTIxMn0.a_R2loG32rGGCAwvGM-YtuUOhzbdJXgGBkzaepZlVF8\",\r\n    \"friend_id\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/statuses/get_friends_statuses.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"statuses",
+								"get_friends_statuses.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2NDQ4Mzc4NjMsImV4cCI6MTY0NDg0MTQ2M30.dfay7AoP2x9mG3vngSjZZck_BRbJEuHjD3sWJemMIa8\",\r\n    \"content\" : \"fdgdfhdshsdfgyahedrfyha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/statuses/post_status.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"statuses",
+								"post_status.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "like_unlike_status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDQ5NjQyMDIsImV4cCI6MTY0NDk2NzgwMn0.Derb1m_fWDFmvdFZJQpcOOOiZRzXRcVUN94eTLwZmHE\",\r\n    \"status_id\" : 8,\r\n    \"is_liked\" : false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/statuses/like_unlike_status.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"statuses",
+								"like_unlike_status.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit_status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2NDQ4Mzc4NjMsImV4cCI6MTY0NDg0MTQ2M30.dfay7AoP2x9mG3vngSjZZck_BRbJEuHjD3sWJemMIa8\",\r\n    \"status_id\" : 3,\r\n    \"content\" : \"tessssssssssssssst\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/statuses/edit_status.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"statuses",
+								"edit_status.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2NDQ4Mzc4NjMsImV4cCI6MTY0NDg0MTQ2M30.dfay7AoP2x9mG3vngSjZZck_BRbJEuHjD3sWJemMIa8\",\r\n    \"status_id\" : 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/statuses/delete_status.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"statuses",
+								"delete_status.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDQ5MjM1NjIsImV4cCI6MTY0NDkyNzE2Mn0.DhChQnZcLhhCyQWV-bxv8xrPl_ZgRdXwYU56trleG70\",\r\n    \"picture\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/users/upload.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"users",
+								"upload.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "friendlist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDUwMTY3NDAsImV4cCI6MTY0NTAyMDM0MH0.t_pSNTjXL3hyfJsSj18gM2IRtWM6-JQCURiUVLkx91c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/users/friendlist.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"users",
+								"friendlist.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "blocklist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDUwMTY3NDAsImV4cCI6MTY0NTAyMDM0MH0.t_pSNTjXL3hyfJsSj18gM2IRtWM6-JQCURiUVLkx91c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/users/blocklist.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"users",
+								"blocklist.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove_friend",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDUwMTY3NDAsImV4cCI6MTY0NTAyMDM0MH0.t_pSNTjXL3hyfJsSj18gM2IRtWM6-JQCURiUVLkx91c\",\r\n    \"friend_id\": 3,\r\n    \"request\": \"accepted\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/users/remove_friend.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"users",
+								"remove_friend.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "block_unblock",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDUwMTY3NDAsImV4cCI6MTY0NTAyMDM0MH0.t_pSNTjXL3hyfJsSj18gM2IRtWM6-JQCURiUVLkx91c\",\r\n    \"friend_id\": 3,\r\n    \"block\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/users/block_unblock.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"users",
+								"block_unblock.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NDUwMTY3NDAsImV4cCI6MTY0NTAyMDM0MH0.t_pSNTjXL3hyfJsSj18gM2IRtWM6-JQCURiUVLkx91c\",\r\n    \"friend_id\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/facebook-api/api/users/add.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"facebook-api",
+								"api",
+								"users",
+								"add.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"hassan.zbib01@gmail.com\",\r\n    \"password\" : \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/facebook-api/api/login.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"facebook-api",
+						"api",
+						"login.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"test@test.com\",\r\n    \"name\" : \"testttt\",\r\n    \"password\" : \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/facebook-api/api/signup.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"facebook-api",
+						"api",
+						"signup.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
