@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     require_once(dirname(__FILE__)."/../authenticate.php");
     // Headers
@@ -6,6 +6,7 @@
     header('Content-Type: application/json');
     header('Access-Control-Allow-Methods: POST');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
+
 
     $bad_request = [ 'message' => 'Bad Request'];
 
@@ -22,18 +23,19 @@
                 ? $temp
                 : die(json_encode(['message' => 'Not Authorized']));
 
-    $friend_id = isset($post->friend_id) 
-                ? $db->real_escape_string($post->friend_id)
+    // turnary / ifs to check post data
+    $record_id = isset($post->record_id) 
+                ? $db->real_escape_string($post->record_id)
                 : die(json_encode($bad_request));
 
-        $request = "pending";
-        $query = $db->prepare("INSERT INTO friends(user_id,friend_id,request) VALUES (?,?,?)"); 
-        $query->bind_param("iis", $user_id,$friend_id,$request);
-        $query->execute();
 
-        echo json_encode(['message' => 'Request sent']);
+    // remove friend-request
+    $query =$db->prepare("UPDATE friends SET request=? WHERE id = ?");
+    $query->bind_param("si", $request, $record_id);
+    $query->execute();
 
-    $query->close();
-    $db->close();
+    echo json_encode(['message' => 'Accepted']);
 
+      $query->close();
+      $db->close();
 ?>

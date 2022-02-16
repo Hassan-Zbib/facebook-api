@@ -22,17 +22,26 @@
                 ? $temp
                 : die(json_encode(['message' => 'Not Authorized']));
 
-    $friend_id = isset($post->friend_id) 
-                ? $db->real_escape_string($post->friend_id)
-                : die(json_encode($bad_request));
-
-        $request = "pending";
-        $query = $db->prepare("INSERT INTO friends(user_id,friend_id,request) VALUES (?,?,?)"); 
-        $query->bind_param("iis", $user_id,$friend_id,$request);
-        $query->execute();
-
-        echo json_encode(['message' => 'Request sent']);
-
+    
+    $request = 'pending';
+    $query = $db->prepare(" SELECT u.*, f.id as request_id , f.request, f.created_at as added_at
+                            FROM users u
+                            INNER JOIN friends f 
+                            ON  f.user_id = u.id OR f.friend_id = u.id 
+                            WHERE u.id != ? AND f.request = ?
+    ");
+    $query->bind_param('is', $user_id, $request);
+    $query->execute();
+    $array = $query->get_result();
+    
+    $array_response = [];
+    while($user = $array->fetch_assoc()){
+        $array_response[] = $user;
+    }
+    
+    $json_response = json_encode($array_response);
+    echo $json_response;
+    
     $query->close();
     $db->close();
 
