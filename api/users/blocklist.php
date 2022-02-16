@@ -24,7 +24,7 @@
 
     
     $request = 'accepted';
-    $query = $db->prepare(" SELECT u.*, b.id as block_id
+    $query = $db->prepare(" SELECT u.*, b.id as block_id, b.created_at as blocked_at
                             FROM users u
                             INNER JOIN blocks b 
                             ON  u.id = b.friend_id
