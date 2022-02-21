@@ -56,14 +56,14 @@ CREATE TABLE `statuses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `statuses` (`id`, `user_id`, `content`, `likes_count`, `created_at`, `updated_at`) VALUES
-(6, 7, 'fdgdfhdshsdfgyahedrfyha', -46, '2022-02-14 12:13:15', '2022-02-17 00:03:52'),
-(8, 7, 'fdgdfhdshsdfgyahedrfyha', -9, '2022-02-14 12:13:30', '2022-02-16 00:30:14'),
-(9, 7, 'fdgdfhdshsdfgyahedrfyha', 8, '2022-02-14 12:13:31', '2022-02-16 01:48:01'),
-(10, 7, 'fdgdfhdshsdfgyahedrfyha', -8, '2022-02-14 13:24:33', '2022-02-16 01:19:09'),
-(11, 3, 'jklhfvhkzxgffdljfvyhlkjc', -9, '2022-02-14 18:45:38', '2022-02-16 01:03:11'),
-(15, 1, 'ewrtfewqrtfewtrftrdfsgtsrfgsgffsg', 0, '2022-02-15 22:52:44', '2022-02-16 14:46:19'),
-(16, 1, 'dfgdg', 0, '2022-02-16 01:23:09', '2022-02-16 01:23:09'),
-(20, 14, 'ghsdghgh', 0, '2022-02-16 21:50:08', '2022-02-16 21:50:08');
+(6, 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 3, '2022-02-14 12:13:15', '2022-02-21 15:17:44'),
+(8, 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat', 9, '2022-02-14 12:13:30', '2022-02-21 15:17:30'),
+(9, 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat', 1, '2022-02-14 12:13:31', '2022-02-21 15:17:27'),
+(10, 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat', 8, '2022-02-14 13:24:33', '2022-02-21 15:17:22'),
+(11, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat', 2, '2022-02-14 18:45:38', '2022-02-21 15:17:19'),
+(15, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat', 0, '2022-02-15 22:52:44', '2022-02-21 15:17:03'),
+(16, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat', 0, '2022-02-16 01:23:09', '2022-02-21 15:17:07'),
+(20, 14, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat', 0, '2022-02-16 21:50:08', '2022-02-21 15:17:10');
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
@@ -78,15 +78,15 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `picture`, `created_at`, `updated_at`) VALUES
 (1, 'Hassan Zbib', 'hassan.zbib01@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-12 19:40:44', '2022-02-16 23:50:14'),
 (3, 'Hala Zbib', 'Halazbib22@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, '2022-02-12 19:42:09', '2022-02-12 19:42:19'),
-(6, 'test', 'HAssan.zbib02@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, '2022-02-13 03:20:20', '2022-02-13 03:20:20'),
-(7, 'testttt', 'test@test.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, '2022-02-14 06:41:55', '2022-02-14 06:41:55'),
-(8, 'testttt', 'tes5t@test.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, '2022-02-15 09:09:58', '2022-02-15 09:09:58'),
-(9, 'test Last', 'test@last.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:12:23', '2022-02-16 17:12:23'),
-(10, 'test2 test2last', 'dsffdsaf@email.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:14:03', '2022-02-16 17:14:03'),
-(11, 'testt test3', 'example@test.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:14:44', '2022-02-16 17:14:44'),
-(12, 'test4 pleaseWork', 'pleaseWork@test.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:15:41', '2022-02-16 17:15:41'),
-(13, 'sdf sdfg', 'sdf@fegh.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:15:55', '2022-02-16 17:15:55'),
-(14, 'hassan  zbib', 'HASSANZBIB@GMAIL.COM', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 21:46:27', '2022-02-16 21:46:27');
+(6, 'Hassan Zbib 2', 'Hassan.zbib02@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, '2022-02-13 03:20:20', '2022-02-21 15:20:54'),
+(7, 'Johm', 'John@email.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, '2022-02-14 06:41:55', '2022-02-21 15:20:58'),
+(8, 'Johm Doe', 'John.Doe@email.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, '2022-02-15 09:09:58', '2022-02-21 15:21:05'),
+(9, 'John D.', 'John_Doe@email.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:12:23', '2022-02-21 15:21:14'),
+(10, 'John_doe', 'John@doe.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:14:03', '2022-02-21 15:21:42'),
+(11, 'Charbel', 'Charbel@se.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:14:44', '2022-02-21 15:21:48'),
+(12, 'User', 'User@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:15:41', '2022-02-21 15:21:58'),
+(13, 'John', 'John@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 17:15:55', '2022-02-21 15:22:07'),
+(14, 'hassan  zbib', 'hassanzbib@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2022-02-16 21:46:27', '2022-02-21 15:20:17');
 
 
 ALTER TABLE `blocks`
@@ -116,7 +116,7 @@ ALTER TABLE `blocks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 ALTER TABLE `likes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;

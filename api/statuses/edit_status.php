@@ -23,7 +23,7 @@
                 ? $temp
                 : die(json_encode(['message' => 'Not Authorized']));
 
-    // turnary / ifs to check post data
+    // ternary / ifs to check post data
     $status_id = isset($post->status_id) 
                 ? $db->real_escape_string($post->status_id)
                 : die(json_encode($bad_request));
